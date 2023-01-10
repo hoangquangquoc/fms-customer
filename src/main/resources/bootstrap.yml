@@ -1,0 +1,32 @@
+---
+# config service information
+CONFIG:
+   SERVER: 171.244.133.9
+   PORT: 9002
+   USER: user
+   PASSWORD: 123456
+---
+spring:
+   application:
+      name: customer-service
+   cloud:
+      config:
+         uri: http://${CONFIG.SERVER}:${CONFIG.PORT}
+         fail-fast: true
+         password: ${CONFIG.PASSWORD}
+         username: ${CONFIG.USER}
+   data:
+    mongodb:
+      host: 171.244.133.2
+      database: monitoring
+      username: monitoring
+      password: Admin@123
+      port: 8001
+#eureka:
+#  client:
+#    enabled: true
+#    registerWithEureka: false
+#    serviceUrl:
+#      defaultZone: http://171.244.133.9:8999/eureka/
+#  registration:
+#    enabled: false  

@@ -1,0 +1,19 @@
+- hosts: 10.60.156.141
+  remote_user: app
+  tasks:
+  - name: Kill process running
+    shell: ps -ef | grep 'customer-service' | grep -v grep | awk '{print $2}' | xargs -r kill -9
+  - name: Copy file to Server Test
+    copy:
+      src: "/u01/jenkins/workspace/vtk-customer-service/VTK-CUSTOMER-SERVICE/vtk-customer-service/target/customer-service.jar"
+      dest: "/home/app/Desktop/fms/CORE/customer-service.jar" 
+  - name: Copy new script file
+    copy:
+      src: "/u01/jenkins/workspace/vtk-customer-service/VTK-CUSTOMER-SERVICE/vtk-customer-service/customer-service.sh"
+      dest: "/home/app/Desktop/fms/SCRIPT/customer-service.sh" 
+  - name: Set excuable
+    command: chmod 777 /home/app/Desktop/fms/SCRIPT/customer-service.sh
+    args:
+      warn: no
+  - name: Start service
+    command: sh /home/app/Desktop/fms/SCRIPT/customer-service.sh
