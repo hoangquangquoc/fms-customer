@@ -845,7 +845,8 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	private boolean isValidUsername(String username) {
-		String pattern = "([a-zA-Z0-9]|\\_|\\-|\\.)*";
+//		String pattern = "([a-zA-Z0-9]|\\_|\\-|\\.)*";
+		String pattern = "([a-zA-Z0-9]|\\_|\\-|\\.)";
 		return username.matches(pattern);
 	}
 }

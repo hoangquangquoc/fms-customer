@@ -86,8 +86,8 @@ public class RouteUtil {
 	 * @return closets point on segment to point
 	 */
 	public static Point getClosestPointOnSegment(int sx1, int sy1, int sx2, int sy2, int px, int py) {
-		double xDelta = sx2 - sx1;
-		double yDelta = sy2 - sy1;
+		double xDelta = (sx2 - sx1)*0.1;
+		double yDelta = (sy2 - sy1)*0.1;
 		double zero = 0.0;
 		final double THRESHOLD = .0001;
 		if ((Math.abs(xDelta - zero) < THRESHOLD) && (Math.abs(yDelta - zero) < THRESHOLD)) {

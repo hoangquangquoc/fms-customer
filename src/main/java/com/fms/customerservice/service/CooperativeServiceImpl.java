@@ -24,7 +24,8 @@ public class CooperativeServiceImpl implements CooperativeService {
 	@Autowired
 	CustomerRepository customerRepository;
 	private boolean isValidUsername(String username) {
-		String pattern = "([a-zA-Z0-9]|\\_|\\-|\\.)*";
+//		String pattern = "([a-zA-Z0-9]|\\_|\\-|\\.)*";
+		String pattern = "([a-zA-Z0-9]|\\_|\\-|\\.)";
 		return username.matches(pattern);
 	}
 	void validateInfoCooperative(String roleId, String provinceId, CooperativeInforRequest request) {

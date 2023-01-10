@@ -243,7 +243,6 @@ public class ShipCustomerServiceImpl implements ShipCustomerService {
 					customerAccountRepository.save(customerAccount);
 				}
 		} catch (Exception e) {
-			e.printStackTrace();
 			throw new ErrorException(e);
 		}
 	}

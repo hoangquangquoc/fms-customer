@@ -60,7 +60,7 @@ public class SupportServiceImpl implements SupportService {
 			int index = 0;
 			for (SupportSMS obj : listSupportSMS) {
 				if (!obj.getType().equals(type)) {
-					if (type != "") {
+					if (!("".equals(type))) {
 						lstSupport.add(objList);
 						objList = new SupportSMSList();
 						objList.setSupportSMSList(new ArrayList<SupportSMS>());

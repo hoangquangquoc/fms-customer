@@ -1075,7 +1075,6 @@ public class CustomerServiceImpl implements CustomerService {
 			}
 			
 		} catch (Exception e) {
-			e.printStackTrace();
 			throw new ErrorException(e);
 		}
 		

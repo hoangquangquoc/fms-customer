@@ -253,45 +253,45 @@ public class UtilsReportService {
 	}
 	// :::::: === END PDF COMMON === :::::
 
-	public String executeExportShellPatch(String fileName) {
-		try {
-			ProcessBuilder processBuilder = new ProcessBuilder();
-			String path = Utils.getFolderPath(Constants.EXPORT_BATCH_FILE_PATH);
-			String filePath = Utils.getFolderPath(Constants.REPORT_EXPORT_PATH);
-			if (Utils.checkWindowsOS()) {
-				// -- Windows --
-				// Run a command
-				// processBuilder.command("cmd.exe", "/c", "dir C:\\Users\\quantri\\app");
-				// Run a bat file
-				String batchFilePath = String.format("%s\\%s", path, Constants.WINDOWS_EXPORT_BATCH_FILE)
-						.replaceAll("/", "");
-				processBuilder.command(batchFilePath, filePath, filePath, fileName);
-			} else {
-				// -- Linux --
-				// Run a shell command
-				// processBuilder.command("bash", "-c", "ls /home/app/");
-				// Run a shell script
-				String batchFilePath = String.format("%s\\%s", path, Constants.LINUX_EXPORT_BATCH_FILE).replaceAll("/",
-						"");
-				processBuilder.command(batchFilePath, filePath, filePath, fileName);
-			}
-			Process process = processBuilder.start();
-			StringBuilder output = new StringBuilder();
-			BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-			String line;
-			while ((line = reader.readLine()) != null) {
-				output.append(line);
-				break;
-			}
-			if (0 != process.waitFor()) {
-				return null;
-			}
-			return output.toString();
-		} catch (Exception e) {
-			LOGGER.error("error: ",e);
-			return null;
-		}
-	}
+//	public String executeExportShellPatch(String fileName) {
+//		try {
+//			ProcessBuilder processBuilder = new ProcessBuilder();
+//			String path = Utils.getFolderPath(Constants.EXPORT_BATCH_FILE_PATH);
+//			String filePath = Utils.getFolderPath(Constants.REPORT_EXPORT_PATH);
+//			if (Utils.checkWindowsOS()) {
+//				// -- Windows --
+//				// Run a command
+//				// processBuilder.command("cmd.exe", "/c", "dir C:\\Users\\quantri\\app");
+//				// Run a bat file
+//				String batchFilePath = String.format("%s\\%s", path, Constants.WINDOWS_EXPORT_BATCH_FILE)
+//						.replaceAll("/", "");
+//				processBuilder.command(batchFilePath, filePath, filePath, fileName);
+//			} else {
+//				// -- Linux --
+//				// Run a shell command
+//				// processBuilder.command("bash", "-c", "ls /home/app/");
+//				// Run a shell script
+//				String batchFilePath = String.format("%s\\%s", path, Constants.LINUX_EXPORT_BATCH_FILE).replaceAll("/",
+//						"");
+//				processBuilder.command(batchFilePath, filePath, filePath, fileName);
+//			}
+//			Process process = processBuilder.start();
+//			StringBuilder output = new StringBuilder();
+//			BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+//			String line;
+//			while ((line = reader.readLine()) != null) {
+//				output.append(line);
+//				break;
+//			}
+//			if (0 != process.waitFor()) {
+//				return null;
+//			}
+//			return output.toString();
+//		} catch (Exception e) {
+//			LOGGER.error("error: ",e);
+//			return null;
+//		}
+//	}
 
 	/*
 	 * hoadp
